@@ -15,18 +15,23 @@
     <title>Craft Storage Tracker</title>
   </head>
   <body class="min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script>
-  // TEMP: Unregister any existing SW to rule out cache issues
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(regs => {
-      regs.forEach(r => r.unregister());
-    }).catch(console.warn);
-  }
+    <div id="root">Loading…</div>
+
+<script>
+  // TEMP: show any silent errors instead of a blank screen
+  window.onerror = function (message, source, line, col, err) {
+    alert('JS error: ' + message);
+    console.error('JS error', { message, source, line, col, err });
+  };
+  window.onunhandledrejection = function (ev) {
+    alert('Promise error: ' + ev.reason);
+    console.error('Promise error', ev.reason);
+  };
 </script>
 
+    <script type="module" src="/src/main.tsx"></script>
     <script>
+     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(console.error);
