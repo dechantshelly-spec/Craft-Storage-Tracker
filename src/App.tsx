@@ -89,8 +89,27 @@ function fileToDataUrl(file: File): Promise<string> {
 
 // --- Components ---
 function LogoMonogram() {
+  const [ok, setOk] = React.useState(true);
+
   return (
-    <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ backgroundColor: colors.primary }}>LS</div>
+    <div
+      className="w-10 h-10 rounded-full shadow-md flex items-center justify-center overflow-hidden"
+      style={{ background: `linear-gradient(135deg, ${colors.primary}, ${colors.primaryHover})` }}
+      title="Craft Storage Tracker"
+    >
+      {ok ? (
+        <img
+          src="/logo.png"
+          alt="Craft Storage Tracker logo"
+          className="w-full h-full object-contain"
+          onError={() => setOk(false)}
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-white font-bold text-sm">
+          LS
+        </div>
+      )}
+    </div>
   );
 }
 
