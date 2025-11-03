@@ -451,25 +451,6 @@ export default function CraftStorageTrackerPWA() {
 
   const toggleView = () => setViewMode(viewMode === "grid" ? "list" : "grid");
 
-  // Self tests (visual)
-  const SelfTests = () => {
-    const tests: {name:string; pass:boolean; note?:string}[] = [];
-    const names = filteredItems.map(i=>i.name);
-    const sorted = [...names].sort((a,b)=>a.localeCompare(b));
-    tests.push({ name: 'Items are alphabetically sorted', pass: JSON.stringify(names) === JSON.stringify(sorted) });
-    tests.push({ name: `View mode '${viewMode}'`, pass: true });
-    tests.push({ name: 'Locations & Categories not empty', pass: locations.length>0 && categories.length>0 });
-
-    return (
-      <div className="mt-4 p-3 rounded-xl border text-xs" style={{ borderColor: colors.border, backgroundColor: '#fff' }}>
-        <div className="font-semibold mb-1" style={{ color: colors.secondaryText }}>Self Tests</div>
-        <ul className="list-disc list-inside">
-          {tests.map((t,i)=>(<li key={i} style={{ color: t.pass ? '#256029' : '#8B0000' }}>{t.pass ? '✅' : '❌'} {t.name}{t.note?` — ${t.note}`:''}</li>))}
-        </ul>
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen flex flex-col font-serif" style={{ backgroundColor: colors.background, color: colors.text }}>
       {/* hidden inputs */}
