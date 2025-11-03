@@ -1,10 +1,31 @@
-# Netlify config for a single-page app (Vite + React)
 [build]
   command = "npm run build"
   publish = "dist"
 
-# Send all routes back to index.html so the app boots (prevents 404/blank)
+# Serve assets and PWA files as-is (avoid SPA rewrite)
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/icons/*"
+  to = "/icons/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/sw.js"
+  to = "/sw.js"
+  status = 200
+
+[[redirects]]
+  from = "/manifest.webmanifest"
+  to = "/manifest.webmanifest"
+  status = 200
+
+# SPA fallback for routes only (comes last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
