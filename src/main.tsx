@@ -1,3 +1,11 @@
+<input
+  ref={fileRef}
+  type="file"
+  accept="application/json,.json"
+  onChange={onRestoreFile}
+  className="hidden"
+/>
+
 import './index.css';   // <-- adds Tailwind + your custom styles
 import React from 'react';
 import ReactDOM from 'react-dom/client';
