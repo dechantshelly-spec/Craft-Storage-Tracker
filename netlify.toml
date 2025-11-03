@@ -2,7 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# Serve assets and PWA files as-is (avoid SPA rewrite)
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"
@@ -23,7 +22,6 @@
   to = "/manifest.webmanifest"
   status = 200
 
-# SPA fallback for routes only (comes last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
