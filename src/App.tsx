@@ -3,15 +3,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 // =============================
 // Craft Storage Tracker PWA — Warm Linen Theme (Full Feature + Camera Capture)
 // =============================
-// Welcome / Notes
-const [showWelcome, setShowWelcome] = useState<boolean>(() => {
-  // first-run: show once
-  const seen = localStorage.getItem("cst_welcome_seen");
-  return !seen;
-});
-useEffect(() => {
-  if (!showWelcome) localStorage.setItem("cst_welcome_seen", "1");
-}, [showWelcome]);
 
 // --- Theme ---
 const colors = {
