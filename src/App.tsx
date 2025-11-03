@@ -639,8 +639,7 @@ export default function CraftStorageTrackerPWA() {
             </ul>
           )}
 
-          <SelfTests />
-        </div>
+            </div>
       </main>
 
       {/* Add Item Modal */}
