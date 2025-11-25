@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- 🧭 Prevent cached startup screens -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-
     <meta name="theme-color" content="#F8ECE4" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icons/icon-192.png" />
@@ -17,21 +15,24 @@
   <body class="min-h-screen">
     <div id="root">Loading…</div>
 
-<script>
-  // TEMP: show any silent errors instead of a blank screen
-  window.onerror = function (message, source, line, col, err) {
-    alert('JS error: ' + message);
-    console.error('JS error', { message, source, line, col, err });
-  };
-  window.onunhandledrejection = function (ev) {
-    alert('Promise error: ' + ev.reason);
-    console.error('Promise error', ev.reason);
-  };
-</script>
-
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Error handling for debugging -->
     <script>
-     <script>
+      // TEMP: show any silent errors instead of a blank screen
+      window.onerror = function (message, source, line, col, err) {
+        alert('JS error: ' + message);
+        console.error('JS error', { message, source, line, col, err });
+      };
+      window.onunhandledrejection = function (ev) {
+        alert('Promise error: ' + ev.reason);
+        console.error('Promise error', ev.reason);
+      };
+    </script>
+
+    <!-- Main application script -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Service Worker registration -->
+    <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').catch(console.error);
